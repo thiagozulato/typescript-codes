@@ -29,7 +29,7 @@ class Person extends Entity {
 }
 
 // Impl Comparer for Person
-class PessoComparer implements IEqualityComparer<Person> {
+class PersonComparer implements IEqualityComparer<Person> {
   equal(x: Person,y: Person): boolean {
     return x.Id === y.Id
   }
@@ -43,9 +43,9 @@ let p: Person =  new Person("Testing");
 let p2: Person = p;
 
 // Shoudl be true
-console.log(comparer(p, p2, new PessoComparer()));
+console.log(comparer(p, p2, new PersonComparer()));
 
 p2 = new Person("Hello World");
 
 // Shoudl be false
-console.log(comparer(p, p2, new PessoComparer()));
+console.log(comparer(p, p2, new PersonComparer()));
