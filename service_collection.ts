@@ -64,11 +64,13 @@ class UserService implements IUserService {
   }
 }
 
-const userService: ApiService<IUserService> = {
-  api: {
+const userMetadata: ApiMetadata = {
     id: "api.user",
     description: "API that holds user information"
-  },
+}
+
+const userService: ApiService<IUserService> = {
+  api: userMetadata,
   factory: () => new UserService()
 }
 
@@ -78,6 +80,6 @@ const serviceCollection = new ServiceCollection();
 serviceCollection.registry(userService);
 
 // Get User Service
-const userApi = serviceCollection.get<IUserService>(userService.api);
+const userApi = serviceCollection.get<IUserService>(userMetadata);
 
 userApi?.getUser();
